@@ -1,19 +1,12 @@
-name: Build AlliedModders Extension
-
-on:
-  push:
-    branches:
-      - master
-      - main
-    tags:
-      - "*"
-  pull_request:
-    branches:
-      - master
-      - main
-
 jobs:
-  build-release-extension:
-    uses: srcdslab/ci-workflows/.github/workflows/shared_build_release_am_extension.yml@v1
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        sm-branch:
+          - master
+          - 1.12-dev
+    uses: Dolly/ci-workflows/.github/workflows/shared_build_release_am_extension.yml@main
     with:
       sdks: "css"
+      sm-branch: ${{ matrix.sm-branch }}
