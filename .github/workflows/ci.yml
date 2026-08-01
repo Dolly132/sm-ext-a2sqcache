@@ -13,15 +13,7 @@ on:
       - main
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        sm-branch:
-          - master
-          - 1.12-dev
+  build-release-extension:
     uses: Dolly132/ci-workflows/.github/workflows/shared_build_release_am_extension.yml@main
     with:
       sdks: "css"
-      sm-branch: ${{ matrix.sm-branch }}
-
